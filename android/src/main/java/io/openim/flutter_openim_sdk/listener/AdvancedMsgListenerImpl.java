@@ -19,18 +19,18 @@ public class AdvancedMsgListenerImpl implements OnAdvancedMsgListener {
     @Override
     public void onRecvC2CReadReceipt(String s) {
         values.put("message", s);
-        CommonUtil.emitEvent(channel, "advancedMsgListener", "onRecvC2CReadReceipt", s);
+        CommonUtil.emitEvent(channel, "advancedMsgListener", "onRecvC2CReadReceipt", values);
     }
 
     @Override
     public void onRecvMessageRevoked(String s) {
         values.put("message", s);
-        CommonUtil.emitEvent(channel, "advancedMsgListener", "onRecvMessageRevoked", s);
+        CommonUtil.emitEvent(channel, "advancedMsgListener", "onRecvMessageRevoked", values);
     }
 
     @Override
     public void onRecvNewMessage(String s) {
         values.put("message", s);
-        CommonUtil.emitEvent(channel, "advancedMsgListener", "onRecvNewMessage", s);
+        CommonUtil.emitEvent(channel, "advancedMsgListener", "onRecvNewMessage", values);
     }
 }

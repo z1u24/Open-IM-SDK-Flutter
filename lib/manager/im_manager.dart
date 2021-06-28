@@ -147,10 +147,9 @@ class IMManager {
               break;
           }
         } else if (call.method == ListenerType.advancedMsgListener) {
-          String type = call.arguments['type'];
-          Map<String, String> data = call.arguments['data'];
-          var msg = Message.fromJson(_formatJson(data['message']));
-          var id = data['id'];
+          var type = call.arguments['type'];
+          var id = call.arguments['data']['id'];
+          var msg = Message.fromJson(_formatJson(call.arguments['data']['message']));
           switch (type) {
             case 'onRecvNewMessage':
               for (var listener in messageManager.advancedMsgListeners) {

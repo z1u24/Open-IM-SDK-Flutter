@@ -25,7 +25,7 @@ class Message {
   FileElem? fileElem;
 
   Message(
-      {required this.clientMsgID,
+      {this.clientMsgID,
       this.serverMsgID,
       this.createTime,
       this.sendTime,
@@ -51,8 +51,8 @@ class Message {
       this.fileElem});
 
   Message.fromJson(Map<String, dynamic> json)
-      : clientMsgID = json['clientMsgID'] {
-    // clientMsgID = json['clientMsgID'];
+  /*  : clientMsgID = json['clientMsgID']*/ {
+    clientMsgID = json['clientMsgID'];
     serverMsgID = json['serverMsgID'];
     createTime = json['createTime'];
     sendTime = json['sendTime'];
@@ -127,11 +127,7 @@ class Message {
   bool operator ==(Object other) {
     // TODO: implement ==
     if (other is Message) {
-      if (null != other.clientMsgID) {
-        return other.clientMsgID == this.clientMsgID;
-      } else if (null != other.serverMsgID) {
-        return other.serverMsgID == this.serverMsgID;
-      }
+      return other.id == id;
     }
     return super == other;
   }
@@ -139,6 +135,9 @@ class Message {
   @override
   // TODO: implement hashCode
   int get hashCode => super.hashCode;
+
+  String? get id =>
+      clientMsgID == null || clientMsgID!.isEmpty ? serverMsgID : clientMsgID;
 }
 
 class PictureElem {
