@@ -9,13 +9,21 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 A new Flutter project.
                        DESC
-  s.homepage         = 'http://example.com'
+
+  s.source = {
+    :git => "https://github.com/z1u24/Open-IM-SDK-Flutter.git",
+    :tag => s.version,
+    :submodules => true
+  }
+  s.homepage         = 'https://github.com/z1u24/Open-IM-SDK-Flutter.git'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '8.0'
+
+  s.vendored_frameworks = 'Framework/*.framework'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
